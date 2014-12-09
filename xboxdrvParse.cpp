@@ -36,17 +36,7 @@ void transmit(string ident, int command1, int command2)
 	char happyData[14];
 	sprintf(happyData, "%2s%6d,%6d\n",ident.c_str(),command1,command2);
 
-//	write(fd,happyData,14);
 	cout << happyData;
-//	gettimeofday(&myStruct,NULL);
-//	newTime = (myStruct.tv_sec % 1000000) * 1000 + myStruct.tv_usec/1000;
-//	cout << newTime;
-//	cout << "\n";
-//	cout << myStruct.tv_usec;
-//	cout << "\n";
-//	cout << "\n";
-//	cout << "made it to the transmit\n";
-
 	close(fd);
 }
 
@@ -63,7 +53,7 @@ int main(int argc, char **argv)
 	gettimeofday(&myStruct,NULL);
         newTime = (myStruct.tv_sec % 1000000) * 1000 + myStruct.tv_usec/1000;
     string xCheck = commandInput.substr(0,2);
-    //cout << xCheck;
+
     if (xCheck == "X1")
     {
         x1 = atoi(commandInput.substr(3,6).c_str());
@@ -92,28 +82,10 @@ int main(int argc, char **argv)
 
 
         if (newTime - oldTime > 50)
-
-//x1 != x1_old || y1 != y1_old)
         {
 	oldTime = newTime;
-    // MOVED        transmit("joy1",x1,y1);
-//            x1_old = x1;
-//            cout << x1;
-//        }
-//        if (y1 != y1_old)
-//        {
-//            transmit("y1",y1);
-//            y1_old = y1;
 	transmit("joy1",x1,y1);
-//            cout << y1;
         }
-//        if (B != B_old)
-//        {
-         //   transmit("B",B);
-//            B_old = B;
-//            cout << B;
-//        }
-
-    }
+      }
     }
 }
